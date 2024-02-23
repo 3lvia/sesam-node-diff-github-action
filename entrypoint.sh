@@ -15,3 +15,7 @@ else
 fi
 
 git diff --no-index $@ -- $INPUT_CONFIG_PATH_LOCAL $INPUT_CONFIG_PATH_DOWNLOAD
+
+# If there are differences, git exits with 1. We want to ignore this and give exit code 0 back to github actions
+
+exit 0
