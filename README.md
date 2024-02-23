@@ -6,22 +6,32 @@ Deploy config to sesam service API.
 
 ### Inputs
 ```
+ download:
+    description: 'Download config from Sesam node'
+    required: true
+    default: true
   node:
     description: 'Sesam node url. eg "datahub-asdfasdf.sesam.cloud"'
     required: true
-
   jwt:
     description: 'JWT authorization token created by the Sesam portal'
     required: true
-
-  config-file:
-    description: 'the location of the config file'
+  config_path_local:
+    description: 'the path to the local sesam config folder. E.g. from checkout action.'
     required: true
-
-  config-group:
+    default: node
+  config_path_download:
+    description: 'the path to the downloaded config folder'
+    required: true
+    default: node_downloaded
+  config_group:
     description: 'config-group to place the config in. Defaults to "default"'
     default: 'Default'
     required: true
+  git_args:
+    description: 'arguments to pass to git diff'
+    default: ''
+    required: false
 ```
 
 ### Outputs
@@ -35,20 +45,17 @@ Deploy config to sesam service API.
 on: [push]
 
 jobs:
-  sesam_upload_job:
+  diff:
     runs-on: ubuntu-latest
-    name: A job to upload sesam config
+    name: git diff node configs
     steps:
-      - name: sesam-upload action step
-        uses: 3lvia/sesam-upload-github-action@v1
-        id: upload
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Do git diff
+        id: sesam_diff
+        uses: 3lvia/sesam-node-diff-github-action@v0.1
         with:
           node: ${{ vars.NODE }}
           jwt: ${{ secrets.JWT }}
-          config-file: 'config/getting-started-config.json'
-          config-group: 'Default'
-      # Use the output from the `upload` step
-      - name: Get the status code
-        run: echo "status code was ${{ steps.upload.outputs.status-code }}"
 ```
 
