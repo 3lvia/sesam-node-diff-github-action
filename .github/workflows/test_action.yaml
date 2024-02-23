@@ -1,0 +1,22 @@
+# .github/workflows/test_action.yaml
+name: Test Action
+
+on:
+  workflow_dispatch: # allow manual trigger of workflow
+
+jobs:
+  diff:
+    runs-on: ubuntu-latest
+    name: git diff node configs
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Do git diff
+        id: sesam_diff
+        uses: ./ # Uses an action in the root directory
+        # or use a released GitHub Action
+        # uses: 3lvia/sesam-validate-action@v1
+        with:
+          download: false
+          config_path_local: node_test1
+          config_path_download: node_test2
