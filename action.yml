@@ -19,7 +19,7 @@ inputs:
   config_path_download:
     description: 'the path to the downloaded config folder'
     required: true
-    default: node_downloaded
+    default: /tmp/node_downloaded
   config_group:
     description: 'config-group to place the config in. Defaults to "default"'
     default: 'Default'
@@ -28,6 +28,14 @@ inputs:
     description: 'arguments to pass to git diff'
     default: ''
     required: false
+  global_metadata_file_path:
+    description: 'path to the global metadata file'
+    required: true
+    default: "global-metadata.conf.json"
+  variable_file_path:
+    description: 'path to the variable file'
+    required: true
+    default: "variables/variables.json"
 outputs:
   status_code: # id of output
     description: 'status code returned by service API'
@@ -36,3 +44,5 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{inputs.git_args}}
+
+ 

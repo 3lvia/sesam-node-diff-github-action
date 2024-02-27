@@ -53,7 +53,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Do git diff
         id: sesam_diff
-        uses: 3lvia/sesam-node-diff-github-action@v0.1
+        uses: 3lvia/sesam-node-diff-github-action@v0.3
         with:
           node: ${{ vars.NODE }}
           jwt: ${{ secrets.JWT }}
