@@ -29,7 +29,11 @@ if $INPUT_DOWNLOAD = "true"; then
   --compressed \
   -o /tmp/sesam/DOWNLOAD/node-metadata.conf.json
 
-  mv /tmp/sesam/DOWNLOAD $INPUT_CONFIG_PATH_DOWNLOAD
+  mkdir -p $INPUT_CONFIG_PATH_DOWNLOAD
+  mv /tmp/sesam/DOWNLOAD/*.json -t $INPUT_CONFIG_PATH_DOWNLOAD
+  mv /tmp/sesam/DOWNLOAD/variables -t $INPUT_CONFIG_PATH_DOWNLOAD
+  mv /tmp/sesam/DOWNLOAD/pipes -t $INPUT_CONFIG_PATH_DOWNLOAD
+  mv /tmp/sesam/DOWNLOAD/systems -t $INPUT_CONFIG_PATH_DOWNLOAD
 
 else
   echo "Only do diff, not downloading config from $INPUT_NODE"
