@@ -1,5 +1,12 @@
 #! /bin/sh
 
+prettify() {
+    local temp_file
+    temp_file=$(mktemp) &&
+      jq . < "$1" > "$temp_file" &&
+      mv -- "$temp_file" "$1"
+}
+
 if $INPUT_DOWNLOAD = "true"; then
 # Make tmp directories
   mkdir -p /tmp/sesam/DOWNLOAD/variables
@@ -42,6 +49,13 @@ fi
 # Check if there are differences between the downloaded config and the local config
 git diff --no-index $@ -- $INPUT_CONFIG_PATH_DOWNLOAD/systems $INPUT_CONFIG_PATH_LOCAL/systems
 git diff --no-index $@ -- $INPUT_CONFIG_PATH_DOWNLOAD/pipes $INPUT_CONFIG_PATH_LOCAL/pipes
+
+# Prettify the node and variables json files in order to make the diff more relevant
+prettify $INPUT_CONFIG_PATH_DOWNLOAD/variables/variables.json
+prettify $INPUT_CONFIG_PATH_LOCAL/variables/variables.json
+prettify $INPUT_CONFIG_PATH_DOWNLOAD/node-metadata.conf.json
+prettify $INPUT_CONFIG_PATH_LOCAL/node-metadata.conf.json
+
 git diff --no-index $@ -- $INPUT_CONFIG_PATH_DOWNLOAD/variables $INPUT_CONFIG_PATH_LOCAL/variables
 git diff --no-index $@ -- $INPUT_CONFIG_PATH_DOWNLOAD/node-metadata.conf.json $INPUT_CONFIG_PATH_LOCAL/node-metadata.conf.json
 
