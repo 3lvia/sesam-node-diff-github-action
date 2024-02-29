@@ -14,9 +14,7 @@ jobs:
       - name: Do git diff
         id: sesam_diff
         uses: ./ # Uses an action in the root directory
-        # or use a released GitHub Action
-        # uses: 3lvia/sesam-validate-action@v1
         with:
           download: false
-          config_path_local: node_test1
-          config_path_download: node_test2
+          config_path_local: node_test_upload
+          config_path_download: node_test_download

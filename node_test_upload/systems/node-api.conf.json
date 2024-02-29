@@ -1,0 +1,9 @@
+{
+  "_id": "node-api",
+  "type": "system:url",
+  "headers": {
+    "Authorization": "bearer $SECRET(cidevelop)"
+  },
+  "url_pattern": "https://$ENV(node-api-name).sesam.cloud/api%s",
+  "verify_ssl": true
+}

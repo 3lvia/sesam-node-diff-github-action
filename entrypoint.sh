@@ -7,6 +7,13 @@ prettify() {
       mv -- "$temp_file" "$1"
 }
 
+get_original() {
+    local temp_file
+    temp_file=$(mktemp) &&
+      jq '.config.original|del(."$audit")' < "$1" > "$temp_file" &&
+      mv -- "$temp_file" "$1"
+}
+
 if $INPUT_DOWNLOAD = "true"; then
 # Make tmp directories
   mkdir -p /tmp/sesam/DOWNLOAD/variables
@@ -53,7 +60,7 @@ git diff --no-index $@ -- $INPUT_CONFIG_PATH_DOWNLOAD/pipes $INPUT_CONFIG_PATH_L
 # Prettify the node and variables json files in order to make the diff more relevant
 prettify $INPUT_CONFIG_PATH_DOWNLOAD/variables/variables.json
 prettify $INPUT_CONFIG_PATH_LOCAL/variables/variables.json
-prettify $INPUT_CONFIG_PATH_DOWNLOAD/node-metadata.conf.json
+get_original $INPUT_CONFIG_PATH_DOWNLOAD/node-metadata.conf.json
 prettify $INPUT_CONFIG_PATH_LOCAL/node-metadata.conf.json
 
 git diff --no-index $@ -- $INPUT_CONFIG_PATH_DOWNLOAD/variables $INPUT_CONFIG_PATH_LOCAL/variables

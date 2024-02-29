@@ -1,0 +1,25 @@
+{
+  "_id": "global-bokstav",
+  "type": "pipe",
+  "source": {
+    "type": "dataset",
+    "completeness": false,
+    "dataset": "dummy-letter",
+    "if_source_empty": "accept"
+  },
+  "transform": {
+    "type": "dtl",
+    "rules": {
+      "default": [
+        ["add", "_id", "_S.::_id"],
+        ["add", "bokstav", "_S.value"]
+      ]
+    }
+  },
+  "metadata": {
+    "domain": "",
+    "global": true,
+    "tags": [],
+    "taxonomy": "global"
+  }
+}

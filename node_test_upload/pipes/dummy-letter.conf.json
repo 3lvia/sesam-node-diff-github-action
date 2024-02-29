@@ -1,0 +1,24 @@
+{
+  "_id": "dummy-letter",
+  "type": "pipe",
+  "source": {
+    "type": "dataset",
+    "dataset": "dummy-letter-raw"
+  },
+  "transform": {
+    "type": "dtl",
+    "rules": {
+      "default": [
+        ["copy", "*"],
+        ["add", "rdf:type", "~:dummy:Letter"]
+      ]
+    }
+  },
+  "metadata": {
+    "system": "dummy",
+    "domain": "",
+    "tags": [],
+    "taxonomy": "refine"
+  },
+  "add_namespaces": true
+}

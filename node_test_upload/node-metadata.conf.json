@@ -1,0 +1,23 @@
+{
+  "_id": "node",
+  "type": "metadata",
+  "compaction": {
+    "range_compaction_duration": 180,
+    "range_compaction_interval": 86400
+  },
+  "dependency_tracking": {
+    "dependency_error_threshold": 75000,
+    "dependency_error_threshold_total_bytes": 268435456
+  },
+  "global_defaults": {
+    "enable_background_rescan": true,
+    "infer_pipe_entity_types": true,
+    "use_config_circuit_breaker": true,
+    "use_signalling_internally": true,
+    "eager_load_microservices": false
+  },
+  "namespaced_identifiers": true,
+  "task_manager": {
+    "disable_user_pipes": true
+  }
+}

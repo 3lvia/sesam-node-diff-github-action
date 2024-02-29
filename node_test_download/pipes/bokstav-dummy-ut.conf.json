@@ -1,0 +1,21 @@
+{
+  "_id": "bokstav-dummy-ut",
+  "type": "pipe",
+  "source": {
+    "type": "dataset",
+    "dataset": "global-bokstav"
+  },
+  "transform": {
+    "type": "dtl",
+    "rules": {
+      "default": [
+        ["copy", "*"]
+      ]
+    }
+  },
+  "metadata": {
+    "domain": "",
+    "tags": [],
+    "taxonomy": "prepare"
+  }
+}

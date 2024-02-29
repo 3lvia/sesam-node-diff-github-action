@@ -1,0 +1,30 @@
+{
+  "_id": "dummy-letter-raw",
+  "type": "pipe",
+  "source": {
+    "type": "conditional",
+    "alternatives": {
+      "prod": {
+        "type": "http_endpoint"
+      },
+      "test": {
+        "type": "http_endpoint"
+      }
+    },
+    "condition": "$ENV(node-env)"
+  },
+  "pump": {
+    "log_events_noop_runs": true,
+    "log_events_noop_runs_changes_only": false,
+    "max_read_retries": 3,
+    "read_retry_delay": 60
+  },
+  "metadata": {
+    "system": "dummy",
+    "comment": "This is a dummy letter raw pipe",
+    "domain": "",
+    "tags": [],
+    "taxonomy": "raw"
+  },
+  "add_namespaces": false
+}

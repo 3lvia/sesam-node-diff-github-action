@@ -1,0 +1,24 @@
+{
+  "_id": "bokstav-dummy-ut-endpoint",
+  "type": "pipe",
+  "source": {
+    "type": "dataset",
+    "dataset": "bokstav-dummy-ut"
+  },
+  "sink": {
+    "type": "http_endpoint"
+  },
+  "transform": {
+    "type": "dtl",
+    "rules": {
+      "default": [
+        ["copy", "*"]
+      ]
+    }
+  },
+  "metadata": {
+    "domain": "",
+    "tags": [],
+    "taxonomy": "endpoint"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "_id": "node-api-raw",
+  "type": "pipe",
+  "source": {
+    "type": "conditional",
+    "alternatives": {
+      "prod": {
+        "type": "json",
+        "system": "node-api",
+        "url": ""
+      },
+      "test": {
+        "type": "http_endpoint"
+      }
+    },
+    "condition": "$ENV(node-env)"
+  },
+  "sink": {
+    "type": "dataset",
+    "dataset": "node-api-raw"
+  },
+  "transform": {
+    "type": "dtl",
+    "rules": {
+      "default": [
+        ["add", "_id", "dummy"],
+        ["copy", "*", "_id"]
+      ]
+    }
+  },
+  "pump": {
+    "schedule_interval": 300
+  }
+}
