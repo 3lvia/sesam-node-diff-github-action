@@ -40,7 +40,10 @@ else
 fi
 
 # Check if there are differences between the downloaded config and the local config
-git diff --no-index $@ -- $INPUT_CONFIG_PATH_DOWNLOAD $INPUT_CONFIG_PATH_LOCAL
+git diff --no-index $@ -- $INPUT_CONFIG_PATH_DOWNLOAD/systems $INPUT_CONFIG_PATH_LOCAL/systems
+git diff --no-index $@ -- $INPUT_CONFIG_PATH_DOWNLOAD/pipes $INPUT_CONFIG_PATH_LOCAL/pipes
+git diff --no-index $@ -- $INPUT_CONFIG_PATH_DOWNLOAD/variables $INPUT_CONFIG_PATH_LOCAL/variables
+git diff --no-index $@ -- $INPUT_CONFIG_PATH_DOWNLOAD/node-metadata.conf.json $INPUT_CONFIG_PATH_LOCAL/node-metadata.conf.json
 
 # If there are differences, git exits with 1. We want to ignore this and give exit code 0 back to github actions
 
