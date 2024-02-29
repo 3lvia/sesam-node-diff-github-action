@@ -1,88 +1,23 @@
 {
   "_id": "node",
-  "subjectidentifier": "http://node",
-  "config": {
-    "original": {
-      "_id": "node",
-      "type": "metadata",
-      "compaction": {
-        "range_compaction_duration": 180,
-        "range_compaction_interval": 86400
-      },
-      "dependency_tracking": {
-        "dependency_error_threshold": 75000,
-        "dependency_error_threshold_total_bytes": 268435456
-      },
-      "global_defaults": {
-        "enable_background_rescan": true,
-        "infer_pipe_entity_types": true,
-        "use_config_circuit_breaker": true,
-        "use_signalling_internally": true,
-        "eager_load_microservices": false
-      },
-      "namespaced_identifiers": true,
-      "task_manager": {
-        "disable_user_pipes": true
-      },
-      "$audit": {
-        "created_ts": "~t2024-02-29T08:56:15.499417088Z",
-        "created_by": {
-          "user_id": "f741b810-1db2-43a7-a3fa-a81244556152",
-          "email": "morten.frellumstad@sesam.io",
-          "remote_addr": "23.102.139.112",
-          "api_token_id": "a71d2a40-a630-45e5-95e1-2f53d0551fbe"
-        },
-        "last_modified_ts": "~t2024-02-29T08:56:15.499417088Z",
-        "last_modified_by": {
-          "user_id": "f741b810-1db2-43a7-a3fa-a81244556152",
-          "email": "morten.frellumstad@sesam.io",
-          "remote_addr": "23.102.139.112",
-          "api_token_id": "a71d2a40-a630-45e5-95e1-2f53d0551fbe"
-        }
-      }
-    },
-    "effective": {
-      "_id": "node",
-      "type": "metadata",
-      "compaction": {
-        "range_compaction_duration": 180,
-        "range_compaction_interval": 86400
-      },
-      "dependency_tracking": {
-        "dependency_error_threshold": 75000,
-        "dependency_error_threshold_total_bytes": 268435456
-      },
-      "global_defaults": {
-        "enable_background_rescan": true,
-        "infer_pipe_entity_types": true,
-        "use_config_circuit_breaker": true,
-        "use_signalling_internally": true,
-        "eager_load_microservices": false
-      },
-      "namespaced_identifiers": true,
-      "task_manager": {
-        "disable_user_pipes": true
-      },
-      "$audit": {
-        "created_ts": "~t2024-02-29T08:56:15.499417088Z",
-        "created_by": {
-          "user_id": "f741b810-1db2-43a7-a3fa-a81244556152",
-          "email": "morten.frellumstad@sesam.io",
-          "remote_addr": "23.102.139.112",
-          "api_token_id": "a71d2a40-a630-45e5-95e1-2f53d0551fbe"
-        },
-        "last_modified_ts": "~t2024-02-29T08:56:15.499417088Z",
-        "last_modified_by": {
-          "user_id": "f741b810-1db2-43a7-a3fa-a81244556152",
-          "email": "morten.frellumstad@sesam.io",
-          "remote_addr": "23.102.139.112",
-          "api_token_id": "a71d2a40-a630-45e5-95e1-2f53d0551fbe"
-        }
-      }
-    }
+  "type": "metadata",
+  "compaction": {
+    "range_compaction_duration": 180,
+    "range_compaction_interval": 86400
   },
-  "runtime": {
-    "is-valid-config": true,
-    "config-errors": []
+  "dependency_tracking": {
+    "dependency_error_threshold": 75000,
+    "dependency_error_threshold_total_bytes": 268435456
+  },
+  "global_defaults": {
+    "enable_background_rescan": true,
+    "infer_pipe_entity_types": true,
+    "use_config_circuit_breaker": true,
+    "use_signalling_internally": true,
+    "eager_load_microservices": false
+  },
+  "namespaced_identifiers": true,
+  "task_manager": {
+    "disable_user_pipes": true
   }
 }

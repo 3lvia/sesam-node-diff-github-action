@@ -1,0 +1,11 @@
+{
+  "dependency": true,
+  "elhub-gln-change-date": "2123-03-13T00:00:00Z",
+  "elsmart-customerid-post-DV4": 24248,
+  "environment-name": "DEV",
+  "hack-bypass-transform-bug": "SYSTEM_NOT_IN_EXISTENCE",
+  "merge-version": 2,
+  "node-env": "test",
+  "pump-mode-DONTCHANGE": "scheduled",
+  "salesforce-Dokumentsenter-queue-id": "00G6N000000KLpDUAW"
+}

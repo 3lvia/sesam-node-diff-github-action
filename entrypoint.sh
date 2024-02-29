@@ -10,7 +10,7 @@ prettify() {
 get_original() {
     local temp_file
     temp_file=$(mktemp) &&
-      jq '.config.original|del(."$audit")' < "$1" > "$temp_file" &&
+      jq '.config|.original|del(."$audit")?|del(."_updated")?|del(."_deleted")?|del(."_hash")?|del(."_deleted")?|del(."_previous")?|del(."_ts")?' < "$1" > "$temp_file" &&
       mv -- "$temp_file" "$1"
 }
 
@@ -44,7 +44,7 @@ if $INPUT_DOWNLOAD = "true"; then
   -o /tmp/sesam/DOWNLOAD/node-metadata.conf.json
 
   mkdir -p $INPUT_CONFIG_PATH_DOWNLOAD
-  mv /tmp/sesam/DOWNLOAD/*.json -t $INPUT_CONFIG_PATH_DOWNLOAD
+  mv /tmp/sesam/DOWNLOAD/node-metadata.conf.json -t $INPUT_CONFIG_PATH_DOWNLOAD
   mv /tmp/sesam/DOWNLOAD/variables -t $INPUT_CONFIG_PATH_DOWNLOAD
   mv /tmp/sesam/DOWNLOAD/pipes -t $INPUT_CONFIG_PATH_DOWNLOAD
   mv /tmp/sesam/DOWNLOAD/systems -t $INPUT_CONFIG_PATH_DOWNLOAD
