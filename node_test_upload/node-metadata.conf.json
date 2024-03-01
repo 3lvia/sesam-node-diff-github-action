@@ -1,6 +1,5 @@
 {
   "_id": "node",
-  "type": "metadata",
   "compaction": {
     "range_compaction_duration": 180,
     "range_compaction_interval": 86400
@@ -17,6 +16,7 @@
     "eager_load_microservices": false
   },
   "namespaced_identifiers": true,
+  "type": "metadata",
   "task_manager": {
     "disable_user_pipes": true
   }

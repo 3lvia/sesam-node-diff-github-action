@@ -3,14 +3,14 @@
 prettify() {
     local temp_file
     temp_file=$(mktemp) &&
-      jq . < "$1" > "$temp_file" &&
+      jq -S . < "$1" > "$temp_file" &&
       mv -- "$temp_file" "$1"
 }
 
 get_original() {
     local temp_file
     temp_file=$(mktemp) &&
-      jq '.config|.original|del(."$audit")?|del(."_updated")?|del(."_deleted")?|del(."_hash")?|del(."_deleted")?|del(."_previous")?|del(."_ts")?' < "$1" > "$temp_file" &&
+      jq -S '.config|.original|del(."$audit")?|del(."_updated")?|del(."_deleted")?|del(."_hash")?|del(."_deleted")?|del(."_previous")?|del(."_ts")?' < "$1" > "$temp_file" &&
       mv -- "$temp_file" "$1"
 }
 
