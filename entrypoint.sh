@@ -54,8 +54,11 @@ else
 fi
 
 # Check if there are differences between the downloaded config and the local config
-git diff --diff-algorithm=patience --no-index $@ -- $INPUT_CONFIG_PATH_DOWNLOAD/systems $INPUT_CONFIG_PATH_LOCAL/systems
-git diff --diff-algorithm=patience --no-index $@ -- $INPUT_CONFIG_PATH_DOWNLOAD/pipes $INPUT_CONFIG_PATH_LOCAL/pipes
+
+echo '```diff' >> $GITHUB_STEP_SUMMARY
+
+git diff --diff-algorithm=histogram --no-index $@ -- $INPUT_CONFIG_PATH_DOWNLOAD/systems $INPUT_CONFIG_PATH_LOCAL/systems >> $GITHUB_STEP_SUMMARY
+git diff --diff-algorithm=histogram --no-index $@ -- $INPUT_CONFIG_PATH_DOWNLOAD/pipes $INPUT_CONFIG_PATH_LOCAL/pipes >> $GITHUB_STEP_SUMMARY
 
 # Prettify the node and variables json files in order to make the diff more relevant
 prettify $INPUT_CONFIG_PATH_DOWNLOAD/variables/variables.json
@@ -63,8 +66,10 @@ prettify $INPUT_CONFIG_PATH_LOCAL/variables/variables.json
 get_original $INPUT_CONFIG_PATH_DOWNLOAD/node-metadata.conf.json
 prettify $INPUT_CONFIG_PATH_LOCAL/node-metadata.conf.json
 
-git diff --diff-algorithm=patience --no-index $@ -- $INPUT_CONFIG_PATH_DOWNLOAD/variables $INPUT_CONFIG_PATH_LOCAL/variables
-git diff --diff-algorithm=patience --no-index $@ -- $INPUT_CONFIG_PATH_DOWNLOAD/node-metadata.conf.json $INPUT_CONFIG_PATH_LOCAL/node-metadata.conf.json
+git diff --diff-algorithm=histogram --no-index $@ -- $INPUT_CONFIG_PATH_DOWNLOAD/variables $INPUT_CONFIG_PATH_LOCAL/variables >> $GITHUB_STEP_SUMMARY
+git diff --diff-algorithm=histogram --no-index $@ -- $INPUT_CONFIG_PATH_DOWNLOAD/node-metadata.conf.json $INPUT_CONFIG_PATH_LOCAL/node-metadata.conf.json >> $GITHUB_STEP_SUMMARY
+
+echo '```' >> $GITHUB_STEP_SUMMARY
 
 # If there are differences, git exits with 1. We want to ignore this and give exit code 0 back to github actions
 
